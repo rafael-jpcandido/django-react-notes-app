@@ -18,5 +18,7 @@ api.interceptors.request.use(
     }
     
 )
+export const loginUser = (data) => api.post("/token/", data)
+export const registerUser = (data) => api.post("/user/register/", data)
 
 export default api
