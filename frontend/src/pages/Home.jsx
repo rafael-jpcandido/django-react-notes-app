@@ -15,7 +15,7 @@ useEffect(() => {
     const getNotes = () => {
         api.get("/notes/")
         .then((res) => res.data)
-        .then((data) => {setNotes(data); console.log(data)})
+        .then((data) => {setNotes(data)})
         .catch((error) => alert(error));
         };
         
@@ -38,15 +38,28 @@ useEffect(() => {
                 .then((res) => {
                     if (res.status === 201) alert("Note created!");
                     else alert("Failed to make note.");
+                    setTitle("");
+                    setContent("");
                     getNotes();
                     })
                 .catch((error) => alert(error));
             
         };
 
+        const handleLogout = () => {
+          localStorage.clear();
+          window.location.href = "/login";
+        };
+
 
  return (
     <div className="notes-page">
+      <div className="home-header">
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+
       <div className="create-note">
         <h2>Create a Note</h2>
         <form onSubmit={createNote}>
