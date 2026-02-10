@@ -66,3 +66,24 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+.notes-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20px;
+}
+
+.create-note {
+  width: 100%;
+  max-width: 600px; 
+  margin-bottom: 30px; 
+}
+
+.notes-list {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

@@ -45,41 +45,43 @@ useEffect(() => {
         };
 
 
-    return <div>
-        <div>
-            <h2>Notes</h2>
-            {notes.map((note) => 
-                <Note note={note} onDelete={deleteNote} key={note.id} />)}
-        
-        </div>
+ return (
+    <div className="notes-page">
+      <div className="create-note">
         <h2>Create a Note</h2>
         <form onSubmit={createNote}>
-            <label htmlFor="title">Title:</label>
-            <br />
-            <input 
-            type="text" 
-            id="title" 
-            name="title" 
+          <label htmlFor="title">Title:</label>
+          <br />
+          <input
+            type="text"
+            id="title"
+            name="title"
             required
-            onChange={(e) => setTitle(e.target.value)}
             value={title}
-            />
-            <label htmlFor="content">Content:</label>
-            <br />
-            <textarea 
-                id="content" 
-                name="content" 
-                required 
-                value ={content}
-                onChange={(e) => setContent(e.target.value)}
-            ></textarea>
-            <br/>
-            <input
-            type="submit"
-            value="Submit"
-            ></input>
-        </form>      
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <label htmlFor="content">Content:</label>
+          <br />
+          <textarea
+            id="content"
+            name="content"
+            required
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+
+      <div className="notes-list">
+        <h2>Notes</h2>
+        {notes.map((note) => (
+          <Note note={note} onDelete={deleteNote} key={note.id} />
+        ))}
+      </div>
     </div>
-};
+  );
+}
 
 export default Home
