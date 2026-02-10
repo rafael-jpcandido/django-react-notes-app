@@ -22,6 +22,15 @@ div {
   border-radius: 5px;
 }
 
+.note-container {
+  background-color: #f9f9f9;
+  margin: 10px 0;
+  padding: 0 15px 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Styles for the form section */
 form {
   background-color: #fff;
@@ -109,4 +118,61 @@ form input[type="submit"]:hover {
 
 .logout-button:hover {
   background-color: #b02a37;
+}
+
+.note-color-bar {
+  height: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+  transition: height 0.2s ease;
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.note-title {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.note-content {
+  margin: 5px 0;
+}
+
+.note-date {
+  font-size: 12px;
+  color: #666;
+}
+
+.delete-button {
+  padding: 6px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.delete-button:hover {
+  background-color: #b02a37;
+}
+
+.note-color-bar.expanded {
+  height: 32px;
+}
+
+.color-menu {
+  display: flex;
+  gap: 6px;
 }

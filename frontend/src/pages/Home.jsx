@@ -89,7 +89,9 @@ useEffect(() => {
 
       <div className="notes-list">
         <h2>Notes</h2>
-        {notes.map((note) => (
+        {[...notes]
+        .sort((a,b) => new Date(b.created_at) - new Date(a.created_at))
+        .map((note) => (
           <Note note={note} onDelete={deleteNote} key={note.id} />
         ))}
       </div>
