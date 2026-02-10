@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Forms.css";
 import LoadingIndicator from "./LoadingIndicator";
@@ -8,7 +8,7 @@ import LoadingIndicator from "./LoadingIndicator";
 function Form({route, method}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [loading, setLoading] = useState("")
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const name = method === "login" ? "Login" : "Register"
 
@@ -32,28 +32,38 @@ function Form({route, method}) {
         }
     };
 
-    return <form onSubmit={handleSubmit} className="form-container">
-        <h1>{name}</h1>
-        <input  
-            className="form-input"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-            />
+    return (
+        <form onSubmit={handleSubmit} className="form-container">
+            <h1>{name}</h1>
+            <input  
+                className="form-input"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username"
+                />
 
-        <input  
-            className="form-input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            />
-            {loading && <LoadingIndicator />}
-            <button className="form-button" type="submit">
-                {name}
-            </button>
-    </form>
+            <input  
+                className="form-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                />
+                {loading && <LoadingIndicator />}
+                <button className="form-button" type="submit">
+                    {name}
+                </button>
+
+                {method == "login" && (
+                    <div className="register-link">
+                        <p>
+                         No account? <Link to="/register">Register here!</Link>                        
+                        </p>
+                    </div>
+                )}
+        </form>
+    );
 }
 
 export default Form
